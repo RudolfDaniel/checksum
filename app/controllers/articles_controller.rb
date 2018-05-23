@@ -1,3 +1,5 @@
+require 'checksum/checksum'
+
 class ArticlesController < ApplicationController
 
   def index
@@ -5,7 +7,7 @@ class ArticlesController < ApplicationController
   end
 
   def show
-    @article = Article.find(params[:id])
+    @article = checksum(Article.find(params[:id]).text)
   end
 
   def new
@@ -15,6 +17,13 @@ class ArticlesController < ApplicationController
     @article = Article.new(article_params)
     @article.save
     redirect_to @article
+  end
+
+  def destroy
+    @article = Article.find(params[:id])
+    @article.destroy
+
+    redirect_to articles_path
   end
 
   private

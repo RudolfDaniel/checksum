@@ -9,6 +9,9 @@
   <% @articles.each do |article| %>
     <tr>
       <td><%= article.text %></td>
+      <td><%= link_to 'Destroy', article_path(article),
+                      method: :delete,
+                      data: { confirm: 'Are you sure?' } %></td>
   <% end %>
 </table>
 

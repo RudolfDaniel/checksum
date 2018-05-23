@@ -1,0 +1,15 @@
+<h1>Listing texts</h1>
+
+<table>
+  <tr>
+    <th>Text</th>
+    <th></th>
+  </tr>
+
+  <% @articles.each do |article| %>
+    <tr>
+      <td><%= article.text %></td>
+  <% end %>
+</table>
+
+<%= link_to 'Checksum text', new_article_path %>
